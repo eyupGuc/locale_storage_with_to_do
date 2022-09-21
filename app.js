@@ -10,7 +10,7 @@ addBtn.addEventListener("click", () => {
   } else {
     const newTodo = {
       id: new Date().getTime(),
-      completed: false,
+      completed: true,
       text: todoInput.value,
     };
     createListElement(newTodo);
@@ -19,8 +19,14 @@ addBtn.addEventListener("click", () => {
 });
 
 const createListElement = (newTodo) => {
+  //? yeni bir li elementi oluştur ve bu elementi obje içerisindeki
+  //? id değerine ve completed clasına ata
   const li = document.createElement("li");
   // li.id=newTodo.id;
+
+  //   newTodo.completed ? li.classList.add("completed") : "";
+  //short sirküt yöntemi
+  newTodo.completed && li.classList.add("completed");
 
   //? ok ikonu oluştur ve li elementine bağla
   li.setAttribute("id", newTodo.id);
