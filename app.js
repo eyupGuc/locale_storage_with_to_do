@@ -14,6 +14,7 @@ addBtn.addEventListener("click", () => {
       text: todoInput.value,
     };
     createListElement(newTodo);
+    todoInput.value = "";
   }
 });
 
@@ -37,4 +38,15 @@ const createListElement = (newTodo) => {
   const deleteIcon = document.createElement("i");
   deleteIcon.setAttribute("class", "fas fa-trash");
   li.appendChild(deleteIcon);
+};
+
+//? Enter tuşuna basıldığında ekleme yapılabilmesi için enter tuşu addBtn nin click fonksiyoununa bağlandı
+todoInput.addEventListener("keydown", (e) => {
+  if (e.code === "Enter") {
+    addBtn.click();
+  }
+});
+
+window.onload = function () {
+  todoInput.focus();
 };
