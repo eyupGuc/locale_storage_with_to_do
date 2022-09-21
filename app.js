@@ -20,6 +20,8 @@ addBtn.addEventListener("click", () => {
 const createListElement = (newTodo) => {
   const li = document.createElement("li");
   // li.id=newTodo.id;
+
+  //? ok ikonu oluştur ve li elementine bağla
   li.setAttribute("id", newTodo.id);
   const okIcon = document.createElement("i");
   okIcon.setAttribute("class", "fas fa-check");
@@ -30,4 +32,9 @@ const createListElement = (newTodo) => {
   const pTextNode = document.createTextNode(newTodo.text);
   p.appendChild(pTextNode);
   li.appendChild(p);
+
+  //? delete ikonu oluştur ve li elementine bağla
+  const deleteIcon = document.createElement("i");
+  deleteIcon.setAttribute("class", "fas fa-trash");
+  li.appendChild(deleteIcon);
 };
