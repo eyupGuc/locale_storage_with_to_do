@@ -10,7 +10,7 @@ addBtn.addEventListener("click", () => {
   } else {
     const newTodo = {
       id: new Date().getTime(),
-      completed: true,
+      completed: false,
       text: todoInput.value,
     };
     createListElement(newTodo);
@@ -49,11 +49,17 @@ const createListElement = (newTodo) => {
   li.appendChild(deleteIcon);
 };
 
-//! Capturing
+//! CAPTURİNG
 todoUl.addEventListener("click", (e) => {
   // console.log(e.target);
+  //! Event delete butobundan geldi ise
   if (e.target.classList.contains("fa-trash")) {
     e.target.parentElement.remove();
+  }
+
+  //! Event, okey butonundan geldi ise
+  if (e.target.classList.contains("fa-check")) {
+    e.target.parentElement.classList.toggle("checked");
   }
 });
 
