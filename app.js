@@ -6,7 +6,15 @@ const todoUl = document.getElementById("todo-ul");
 
 //! Locale Storage
 
-let todos = [];
+let todos = JSON.parse(localStorage.getItem("TODOS"));
+console.log(todos);
+
+const renderSavedTodos = () => {
+  todos.forEach((todo) => {
+    createListElement(todo);
+  });
+};
+renderSavedTodos();
 
 addBtn.addEventListener("click", () => {
   if (todoInput.value.trim() === "") {
@@ -31,7 +39,7 @@ addBtn.addEventListener("click", () => {
   }
 });
 
-const createListElement = (newTodo) => {
+function createListElement(newTodo) {
   const { id, completed, text } = newTodo; //!destruction
   //? yeni bir li elementi oluştur ve bu elementi obje içerisindeki
   //? id değerine ve completed clasına ata
@@ -60,7 +68,7 @@ const createListElement = (newTodo) => {
   const deleteIcon = document.createElement("i");
   deleteIcon.setAttribute("class", "fas fa-trash");
   li.appendChild(deleteIcon);
-};
+}
 
 //! CAPTURİNG
 todoUl.addEventListener("click", (e) => {
