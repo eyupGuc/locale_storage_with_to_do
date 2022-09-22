@@ -6,7 +6,7 @@ const todoUl = document.getElementById("todo-ul");
 
 //! Locale Storage
 
-let todos = JSON.parse(localStorage.getItem("TODOS"));
+let todos = JSON.parse(localStorage.getItem("TODOS")) || [];
 console.log(todos);
 
 const renderSavedTodos = () => {
