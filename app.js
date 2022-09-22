@@ -49,14 +49,14 @@ function createListElement(newTodo) {
   //   newTodo.completed ? li.classList.add("completed") : "";
   //short sirküt yöntemi
   completed && li.classList.add("checked");
-  console.log(li);
+  // console.log(li);
 
   //? ok ikonu oluştur ve li elementine bağla
   li.setAttribute("id", id);
   const okIcon = document.createElement("i");
   okIcon.setAttribute("class", "fas fa-check");
   li.appendChild(okIcon);
-  console.log(li);
+  // console.log(li);
   todoUl.appendChild(li);
   const p = document.createElement("p");
   const pTextNode = document.createTextNode(text);
@@ -73,11 +73,16 @@ function createListElement(newTodo) {
 //! CAPTURİNG
 todoUl.addEventListener("click", (e) => {
   // console.log(e.target);
+  const id = e.target.parentElement.getAttribute("id");
+  console.log(id);
+
   //! Event delete butobundan geldi ise
   if (e.target.classList.contains("fa-trash")) {
     e.target.parentElement.remove();
   }
 
+  //! delete butonu ile localstorage den silmek
+  todos = todos.filter((todo) => todo.id !== Number(id));
   //! Event, okey butonundan geldi ise
   if (e.target.classList.contains("fa-check")) {
     e.target.parentElement.classList.toggle("checked");
