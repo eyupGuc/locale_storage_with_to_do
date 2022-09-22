@@ -51,7 +51,10 @@ const createListElement = (newTodo) => {
 
 //! Capturing
 todoUl.addEventListener("click", (e) => {
-  console.log(e.target);
+  // console.log(e.target);
+  if (e.target.classList.contains("fa-trash")) {
+    e.target.parentElement.remove();
+  }
 });
 
 //? Enter tuşuna basıldığında ekleme yapılabilmesi için enter tuşu addBtn nin click fonksiyoununa bağlandı
@@ -64,7 +67,9 @@ todoInput.addEventListener("keydown", (e) => {
 window.onload = function () {
   todoInput.focus();
 };
-const body = document.querySelector("body");
+
+//! body capturing used
+/* const body = document.querySelector("body");
 body.addEventListener("click", (e) => {
   console.log(e.target);
-});
+});*/
