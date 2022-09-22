@@ -49,6 +49,11 @@ const createListElement = (newTodo) => {
   li.appendChild(deleteIcon);
 };
 
+//! Capturing
+todoUl.addEventListener("click", (e) => {
+  console.log(e.target);
+});
+
 //? Enter tuşuna basıldığında ekleme yapılabilmesi için enter tuşu addBtn nin click fonksiyoununa bağlandı
 todoInput.addEventListener("keydown", (e) => {
   if (e.code === "Enter") {
@@ -59,3 +64,7 @@ todoInput.addEventListener("keydown", (e) => {
 window.onload = function () {
   todoInput.focus();
 };
+const body = document.querySelector("body");
+body.addEventListener("click", (e) => {
+  console.log(e.target);
+});
