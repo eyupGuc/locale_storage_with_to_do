@@ -19,6 +19,7 @@ addBtn.addEventListener("click", () => {
 });
 
 const createListElement = (newTodo) => {
+  const { id, completed, text } = newTodo; //!destruction
   //? yeni bir li elementi oluştur ve bu elementi obje içerisindeki
   //? id değerine ve completed clasına ata
   const li = document.createElement("li");
@@ -26,18 +27,19 @@ const createListElement = (newTodo) => {
 
   //   newTodo.completed ? li.classList.add("completed") : "";
   //short sirküt yöntemi
-  newTodo.completed && li.classList.add("completed");
+  completed && li.classList.add("checked");
   console.log(li);
 
   //? ok ikonu oluştur ve li elementine bağla
-  li.setAttribute("id", newTodo.id);
+  li.setAttribute("id", id);
   const okIcon = document.createElement("i");
   okIcon.setAttribute("class", "fas fa-check");
   li.appendChild(okIcon);
   console.log(li);
   todoUl.appendChild(li);
   const p = document.createElement("p");
-  const pTextNode = document.createTextNode(newTodo.text);
+  const pTextNode = document.createTextNode(text);
+  // const pTextNode = document.createTextNode(newTodo.text); destruction dan dolayı newTodo.text yerine direkt text kullanılabilir
   p.appendChild(pTextNode);
   li.appendChild(p);
 
