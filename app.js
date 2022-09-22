@@ -4,6 +4,10 @@ const addBtn = document.querySelector("#todo-button");
 const todoInput = document.querySelector("#todo-input");
 const todoUl = document.getElementById("todo-ul");
 
+//! Locale Storage
+
+let todos = [];
+
 addBtn.addEventListener("click", () => {
   if (todoInput.value.trim() === "") {
     alert("Please enter todo");
@@ -13,7 +17,16 @@ addBtn.addEventListener("click", () => {
       completed: false,
       text: todoInput.value,
     };
+
+    //! Yeni bir li elementi oluşturup bunu DOM'a bas
     createListElement(newTodo);
+
+    //? yeni oluşturulan todo'yu diziye sakla
+
+    todos.push(newTodo);
+
+    localStorage.setItem("TODOS", JSON.stringify(todos));
+    console.log(todos);
     todoInput.value = "";
   }
 });
