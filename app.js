@@ -27,6 +27,7 @@ const createListElement = (newTodo) => {
   //   newTodo.completed ? li.classList.add("completed") : "";
   //short sirküt yöntemi
   newTodo.completed && li.classList.add("completed");
+  console.log(li);
 
   //? ok ikonu oluştur ve li elementine bağla
   li.setAttribute("id", newTodo.id);
