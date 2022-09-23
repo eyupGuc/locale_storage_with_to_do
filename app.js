@@ -73,16 +73,21 @@ function createListElement(newTodo) {
 //! CAPTURİNG
 todoUl.addEventListener("click", (e) => {
   // console.log(e.target);
+  const de = e.target.parentElement;
+  console.log(de);
   const id = e.target.parentElement.getAttribute("id");
   console.log(id);
 
   //! Event delete butobundan geldi ise
   if (e.target.classList.contains("fa-trash")) {
     e.target.parentElement.remove();
+    //! delete butonu ile localstorage den silmek
+    todos = todos.filter((todo) => todo.id !== Number(id));
+    console.log(todos);
+    //! todos dizisinin son halini localstroagede saklamak
+    localStorage.setItem("TODOS", JSON.stringify(todos));
   }
 
-  //! delete butonu ile localstorage den silmek
-  todos = todos.filter((todo) => todo.id !== Number(id));
   //! Event, okey butonundan geldi ise
   if (e.target.classList.contains("fa-check")) {
     e.target.parentElement.classList.toggle("checked");
